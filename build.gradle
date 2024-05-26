@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+apply plugin:'application'
+
+application {
+    mainClassName = 'com.gradle_demo.Test'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
+}
+
+tasks.register('kiran') {
+    description = 'This is kiran Task'
+    doFirst {
+        println "My 1st task complete"
+    }
+    doLast {
+        println "2nd task not completed"
+    }
+}
+
+tasks.register('mainclassrun', JavaExec) {
+    description = 'Runs the application'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.gradle_demo.demo1'
+}
